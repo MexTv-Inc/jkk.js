@@ -1,0 +1,47 @@
+var player = new OpenPlayer('[mextv]', [valid VAST/VPAID URL|List of VAST/VPAID URLs], [`true|false` for fullscreen effect by default], {
+    // Controls configuration by default; `levels` can be added as well since it's an optional feature;
+    // Each one of the items will have in their class name the `op-control__[left|middle|right]` according
+    // to the controls' structure listed below
+    controls: {
+        left: ['play', 'time', 'volume'],
+        middle: ['progress'],
+        right: ['captions', 'settings', 'fullscreen'],
+    },
+    // Allow items to be contained in a different space outside of `Settings`
+    detachMenus,
+    // Number of ms that takes the player to hide the Play button once it starts playing (video only)
+    // (bt default, `350`)
+    hidePlayBtnTimer,
+    // Number of seconds to rewind/forward media
+    // (by default, player will rewind/forward 5% of the total duration of media)
+    step,
+    // Initial volume of media in decimal numbers (by default, `1`)
+    startVolume,
+    // Initial play time of media in seconds (by default, `0`)
+    startTime,
+    // Allow loader to be displayed when loading video (by default, `false`)
+    showLoaderOnInit,
+    // Callback to be executed once an error is found (default, `console.error`)
+    // Params passed: Custom event with `detail: { type: 'HTML5|Ads|M(PEG)-DASH|HLS', message, data },`
+    onError,
+    ads: {
+        // Custom path/URL to IMA SDK
+        url,
+        // If set to `true`, load `ima3_debug.js` file for debugging purposes
+        debug
+    },
+    hls: {
+        // all HLS options available at https://github.com/video-dev/hls.js/blob/master/docs/API.md#fine-tuning.
+    },
+    dash: {
+        // Possible values are SW_SECURE_CRYPTO, SW_SECURE_DECODE, HW_SECURE_CRYPTO, HW_SECURE_CRYPTO,
+        // HW_SECURE_DECODE, HW_SECURE_ALL
+        robustnessLevel,
+        // object containing property names corresponding to key system name strings (e.g. "org.w3.clearkey") and
+        // associated values being instances of ProtectionData
+        // (http://vm2.dashif.org/dash.js/docs/jsdocs/MediaPlayer.vo.protection.ProtectionData.html)
+        drm
+    },
+});
+// Don't forget to start the player
+player.init();
